@@ -1414,14 +1414,10 @@ def read_aloud_with_gTTS(chat_id, text):
 # Handle webhook requests
 @app.route('/' + bot_token, methods=['POST'])
 def webhook():
-    print("Webhook called")  # Log when the webhook is called
     try:
         update = telebot.types.Update.de_json(request.stream.read().decode('utf-8'))
-        print("Received update:", update)  # Log the received update
         bot.process_new_updates([update])
-        print("Update processed")
     except Exception as e:
-        print("Error processing update:", e)  # Log any errors
     return '', 200
 
 # Main function
