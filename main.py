@@ -1418,10 +1418,6 @@ def webhook():
     print(update) 
     bot.process_new_updates([update])
     return '', 200
-    
-@bot.message_handler(commands=['start'])
-def handle_start(message):
-    bot.reply_to(message, "Bot is working!")
 
 # Main function
 if __name__ == '__main__':
