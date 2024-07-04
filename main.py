@@ -1415,8 +1415,13 @@ def read_aloud_with_gTTS(chat_id, text):
 @app.route('/' + bot_token, methods=['POST'])
 def webhook():
     update = telebot.types.Update.de_json(request.stream.read().decode('utf-8'))
+    print(update) 
     bot.process_new_updates([update])
     return '', 200
+    
+@bot.message_handler(commands=['start'])
+def handle_start(message):
+    bot.reply_to(message, "Bot is working!")
 
 # Main function
 if __name__ == '__main__':
