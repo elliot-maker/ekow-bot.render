@@ -1414,11 +1414,9 @@ def read_aloud_with_gTTS(chat_id, text):
 # Handle webhook requests
 @app.route('/' + bot_token, methods=['POST'])
 def webhook():
-    try:
-        update = telebot.types.Update.de_json(request.stream.read().decode('utf-8'))
-        bot.process_new_updates([update])
-    except Exception as e:
-        return '', 200
+    update = telebot.types.Update.de_json(request.stream.read().decode('utf-8'))
+    bot.process_new_updates([update])
+    return '', 200
 
 # Main function
 if __name__ == '__main__':
