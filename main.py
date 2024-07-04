@@ -1418,7 +1418,7 @@ def webhook():
         update = telebot.types.Update.de_json(request.stream.read().decode('utf-8'))
         bot.process_new_updates([update])
     except Exception as e:
-    return '', 200
+        return '', 200
 
 # Main function
 if __name__ == '__main__':
